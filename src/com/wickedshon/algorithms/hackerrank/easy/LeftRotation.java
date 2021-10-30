@@ -59,8 +59,6 @@ public class LeftRotation {
       }
 
       return numbers;
-
-
    }
 
    public static void main(String[] args) {
