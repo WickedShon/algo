@@ -7,36 +7,42 @@ import java.util.Arrays;
  * @author: wickedShon
  * Program description: Quick sort algorithm implementation.
  * Status: Complete
- * Solution time complexity: Worst case O(n^), best case Omega(nlogn)
+ * Solution time complexity: Best case: Omega(nlogn), Average case: Theta(nlogn),
+ * Worst case: O(n^2)
  * Solution space complexity: O(n)
  */
 
 public class QuickSort {
-   private static void quickSort(int[] numbers, int start, int end) {
+   private static <E extends Comparable<E>> void quickSort(E[] elements,
+                                                           int start,
+                                                           int end) {
       // return if there is no element left to compare
       if (start >= end) {
          return;
       }
       // get the mid element as a comparison point
-      int pivot = numbers[(start + end) / 2];
+      E pivot = elements[(start + end) / 2];
       // get the most recent left as an index to partition the array
-      int index = partition(numbers, start, end, pivot);
+      int index = partition(elements, start, end, pivot);
       // divide the array as left sub arrays
-      quickSort(numbers, start, index - 1);
+      quickSort(elements, start, index - 1);
       // divide the array as right sub arrays
-      quickSort(numbers, index, end);
+      quickSort(elements, index, end);
    }
 
-   private static int partition(int[] numbers, int start, int end, int pivot) {
+   private static <E extends Comparable<E>> int partition(E[] elements,
+                                                          int start,
+                                                          int end,
+                                                          E pivot) {
       while (start <= end) {
-         while (numbers[start] < pivot) {
+         while (elements[start].compareTo(pivot) < 0) {
             start++;
          }
-         while (numbers[end] > pivot) {
+         while (elements[end].compareTo(pivot) > 0) {
             end--;
          }
          if (start <= end) {
-            swap(numbers, start, end);
+            swap(elements, start, end);
             start++;
             end--;
          }
@@ -45,16 +51,24 @@ public class QuickSort {
       return start;
    }
 
-   private static void swap(int[] numbers, int start, int end) {
-      int temp = numbers[start];
-      numbers[start] = numbers[end];
-      numbers[end] = temp;
+   private static <E> void swap(E[] elements, int start, int end) {
+      E temp = elements[start];
+      elements[start] = elements[end];
+      elements[end] = temp;
    }
 
+   // sample output
    public static void main(String[] args) {
-      int[] numbers = {3, 1, 6, 5, 8};
+      String[] strings = {"vector", "algorithm", "sort", "structure", "data"};
+      Character[] characters = {'d', 'a', 'w', 'o', 's'};
+      Integer[] numbers = {3, 1, 6, 5, 8};
+
+      quickSort(strings, 0, strings.length - 1);
+      quickSort(characters, 0, characters.length - 1);
       quickSort(numbers, 0, numbers.length - 1);
 
+      System.out.println(Arrays.toString(strings));
+      System.out.println(Arrays.toString(characters));
       System.out.println(Arrays.toString(numbers));
    }
 }
