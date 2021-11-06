@@ -7,7 +7,7 @@ import java.util.Arrays;
  * @author: wickedShon
  * Program description: Generic insertion sort algorithm implementation
  * Status: Complete
- * Solution time complexity: Best Case: nlogn, Average and Worst case: n^2
+ * Solution time complexity: Best Case: Omega(n), Average and Worst case: n^2
  * Solution space complexity: Constant
  */
 
