@@ -6,8 +6,8 @@ import java.util.Arrays;
  * @date: 11/2/2021
  * @author: wickedShon
  * Program description: Generic insertion sort algorithm implementation
- * Status: Complete
- * Solution time complexity: Best Case: Omega(n), Average and Worst case: n^2
+ * Status: Complete 
+ * Solution time complexity: Best Case: Omega(n), Average and Worst case: n^2 
  * Solution space complexity: Constant
  */
 
